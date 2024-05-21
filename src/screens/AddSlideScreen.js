@@ -97,7 +97,7 @@ const AddSlides = () => {
       </View>
 
       <View style={styles.inputWrapper}>
-        <Button onPress={selectImage}>Chọn ảnh</Button>
+        <Button style={{width: 100, backgroundColor: '#F6995C'}} onPress={selectImage}>Chọn ảnh</Button>
         {imageUri ? (
           <Image source={{uri: imageUri}} style={styles.imagePreview} />
         ) : null}
@@ -107,14 +107,15 @@ const AddSlides = () => {
         <Button
           style={{
             backgroundColor: COLORS.pink,
-            width: 300,
+            width: 200,
             height: 50,
-            justifyContent: 'center',
+            marginLeft: 80,
+            justifyContent: 'center'
           }}
           contentStyle={{height: 40}}
           labelStyle={{fontSize: 16, color: 'white'}}
           onPress={AddSlide}>
-          Add
+          Thêm ảnh bìa
         </Button>
       </View>
     </SafeAreaView>

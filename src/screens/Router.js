@@ -12,6 +12,8 @@ import COLORS from '../../constants';
 import Icon from 'react-native-vector-icons/FontAwesome6';
 import FavoruiteScreen from './FavouriteScreen';
 import OrderScreen from './OrderScreen';
+import AddProductScreen from './AddProductScreen';
+import AddSlides from './AddSlideScreen';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -27,6 +29,11 @@ const AdminScreens = () => (
     <Stack.Screen
       name="Home"
       component={Admin}
+      options={{ headerShown: false }}
+    />
+    <Stack.Screen
+      name="AddProduct"
+      component={AddProductScreen}
       options={{ headerShown: false }}
     />
   </Stack.Navigator>
@@ -78,12 +85,12 @@ const Router = () => {
             tabBarShowLabel: true,
             tabBarStyle:{
               position: 'absolute',
-              bottom: 25,
-              left: 20,
-              right: 20,
+              left: 10,
+              right: 10,
               elevation: 0,
               borderRadius: 15,
-              height: 70,
+              height: 60,
+              
             },
             tabBarLabelStyle: {
               fontSize: 12,
@@ -91,17 +98,39 @@ const Router = () => {
             },
           }}
         >
-          {userLogin.role === 'admin' ? (
-            <Tab.Screen
-              name="Admin"
-              component={AdminScreens}
-              options={{
-                tabBarIcon: ({ color, size }) => (
-                  <Icon name="house" color={color} size={size}  />
-                ),
-                title: 'Home',
-              }}
-            />
+         {userLogin.role === 'admin' ? (
+            <>
+              <Tab.Screen
+                name="Admin"
+                component={AddSlides}
+                options={{
+                  tabBarIcon: ({ color, size }) => (
+                    <Icon name="house" color={color} size={size}  />
+                  ),
+                  title: 'Ảnh bìa',
+                }}
+              />
+              <Tab.Screen
+                name="AddProduct"
+                component={AddProductScreen}
+                options={{
+                  tabBarIcon: ({ color, size }) => (
+                    <Icon name="utensils" color={color} size={size}  />
+                  ),
+                  title: 'Món ăn',
+                }}
+              />
+              <Tab.Screen
+                name="Setting"
+                component={SettingScreens}
+                options={{
+                  tabBarIcon: ({ color, size }) => (
+                    <Icon name="gears" color={color} size={size} />
+                  ),
+                  title: 'Cài đặt',
+                }}
+              />
+            </>
           ) : (
             <>
               <Tab.Screen
@@ -130,7 +159,7 @@ const Router = () => {
                 options={{
                   tabBarBadge: 3,
                   tabBarIcon: ({ color, size }) => (
-                    <Icon name="star" color={color} size={size} />
+                    <Icon name="utensils" color={color} size={size} />
                   ),
                   title: 'Đặt hàng',
                 }}

@@ -15,6 +15,7 @@ import {
 import {useMyContextController, login} from '../context';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import LoginGoogle from './LoginGoogle';
+import COLOR from '../../constants'
 const LoginScreen = ({navigation}) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -31,7 +32,7 @@ const LoginScreen = ({navigation}) => {
   };
 
   return (
-    <SafeAreaView style={{backgroundColor: '#ffffff'}}>
+    <SafeAreaView style={{backgroundColor: '#ffff'}}>
       <View style={{padding: 10}}>
         <View style={{alignItems: 'center', margin: 20}}>
           <Image
